@@ -2,12 +2,13 @@ version: '3.8'
 
 services:
   web:
-    build: .
-    image: ${IMAGE_NAME}
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: subsonic-client
     restart: unless-stopped
     ports:
-      - "80:80"
+      - "${PORT:-80}:80"
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80/"]
       interval: 30s
@@ -16,6 +17,6 @@ services:
     environment:
       - NODE_ENV=production
     labels:
-      - 'easypanel.template.name=subsonic-client'
-      - 'easypanel.template.description=Subsonic Music Client'
-      - 'easypanel.template.ports=80:http'
+      - "traefik.enable=true"
+      - "traefik.http.routers.subsonic-client.rule=Host(`${DOMAIN:-localhost}`)"
+      - "traefik.http.services.subsonic-client.loadbalancer.server.port=80"
