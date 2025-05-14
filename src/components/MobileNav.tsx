@@ -10,11 +10,11 @@ const MobileNav: React.FC<MobileNavProps> = ({ onLogout }) => {
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-gray-800 border-t border-gray-700 pb-safe z-10">
       <div className="grid grid-cols-5 h-16">
-        <NavItem to="/" icon={<Home size={20} />} label="Home" />
-        <NavItem to="/albums" icon={<Disc size={20} />} label="Albums" />
-        <NavItem to="/artists" icon={<Mic2 size={20} />} label="Artists" />
-        <NavItem to="/search" icon={<Search size={20} />} label="Search" />
-        <NavItem to="/profile" icon={<User size={20} />} label="Profile" />
+        <NavItem to="/" icon={<Home size={20} />} label="Início" />
+        <NavItem to="/albums" icon={<Disc size={20} />} label="Álbuns" />
+        <NavItem to="/artists" icon={<Mic2 size={20} />} label="Artistas" />
+        <NavItem to="/search" icon={<Search size={20} />} label="Buscar" />
+        <NavItem to="/profile" icon={<User size={20} />} label="Perfil" />
       </div>
     </div>
   );

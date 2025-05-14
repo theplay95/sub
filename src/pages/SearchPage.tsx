@@ -32,8 +32,8 @@ const SearchPage: React.FC = () => {
       
       setError(null);
     } catch (err) {
-      setError('Search failed. Please try again later.');
-      console.error('Search error:', err);
+      setError('A busca falhou. Por favor, tente novamente mais tarde.');
+      console.error('Erro na busca:', err);
     } finally {
       setLoading(false);
     }
@@ -43,7 +43,7 @@ const SearchPage: React.FC = () => {
   
   return (
     <div className="px-4 py-6 md:px-8">
-      <h1 className="text-3xl font-bold mb-6">Search</h1>
+      <h1 className="text-3xl font-bold mb-6">Buscar</h1>
       
       <form onSubmit={handleSearch} className="mb-8">
         <div className="relative">
@@ -54,14 +54,14 @@ const SearchPage: React.FC = () => {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search for artists, albums, or songs..."
+            placeholder="Busque por artistas, álbuns ou músicas..."
             className="block w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
           <button
             type="submit"
             className="absolute inset-y-0 right-0 px-4 text-white bg-indigo-600 hover:bg-indigo-700 rounded-r-md"
           >
-            Search
+            Buscar
           </button>
         </div>
       </form>
@@ -77,17 +77,16 @@ const SearchPage: React.FC = () => {
       ) : hasSearched && !hasResults ? (
         <div className="flex flex-col items-center justify-center py-12 text-gray-400">
           <Search size={48} className="mb-4 text-gray-600" />
-          <p className="text-center text-lg mb-2">No results found</p>
-          <p className="text-center text-gray-500">Try different keywords or check your spelling</p>
+          <p className="text-center text-lg mb-2">Nenhum resultado encontrado</p>
+          <p className="text-center text-gray-500">Tente palavras-chave diferentes ou verifique a ortografia</p>
         </div>
       ) : (
         <>
-          {/* Artists */}
           {artists.length > 0 && (
             <section className="mb-10">
               <div className="flex items-center mb-4">
                 <Mic2 size={20} className="mr-2 text-indigo-500" />
-                <h2 className="text-xl font-semibold">Artists</h2>
+                <h2 className="text-xl font-semibold">Artistas</h2>
               </div>
               
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
@@ -98,12 +97,11 @@ const SearchPage: React.FC = () => {
             </section>
           )}
           
-          {/* Albums */}
           {albums.length > 0 && (
             <section className="mb-10">
               <div className="flex items-center mb-4">
                 <Disc size={20} className="mr-2 text-indigo-500" />
-                <h2 className="text-xl font-semibold">Albums</h2>
+                <h2 className="text-xl font-semibold">Álbuns</h2>
               </div>
               
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
@@ -114,12 +112,11 @@ const SearchPage: React.FC = () => {
             </section>
           )}
           
-          {/* Songs */}
           {songs.length > 0 && (
             <section>
               <div className="flex items-center mb-4">
                 <Music size={20} className="mr-2 text-indigo-500" />
-                <h2 className="text-xl font-semibold">Songs</h2>
+                <h2 className="text-xl font-semibold">Músicas</h2>
               </div>
               
               <div className="bg-gray-800 rounded-lg overflow-hidden">
@@ -128,14 +125,12 @@ const SearchPage: React.FC = () => {
                     <span>#</span>
                   </div>
                   <div className="flex-grow min-w-0 mr-4">
-                    <span>Title</span>
+                    <span>Título</span>
                   </div>
                   <div className="flex-shrink-0 mr-4">
-                    <span>Duration</span>
+                    <span>Duração</span>
                   </div>
-                  <div className="w-8 flex-shrink-0">
-                    {/* Empty space for the menu button */}
-                  </div>
+                  <div className="w-8 flex-shrink-0"></div>
                 </div>
                 
                 {songs.map((song, index) => (
@@ -150,8 +145,8 @@ const SearchPage: React.FC = () => {
       {!hasSearched && (
         <div className="flex flex-col items-center justify-center py-16 text-gray-400">
           <Search size={64} className="mb-6 text-gray-600" />
-          <p className="text-center text-lg mb-2">Search for your favorite music</p>
-          <p className="text-center text-gray-500">Find artists, albums, and songs in your library</p>
+          <p className="text-center text-lg mb-2">Busque por suas músicas favoritas</p>
+          <p className="text-center text-gray-500">Encontre artistas, álbuns e músicas em sua biblioteca</p>
         </div>
       )}
     </div>
